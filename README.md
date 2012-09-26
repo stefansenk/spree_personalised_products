@@ -3,7 +3,7 @@ SpreePersonalisedProducts
 
 Adds support for personalised products to Spree.
 
-Currently under construction.
+Currently under construction!
 
 
 Example
