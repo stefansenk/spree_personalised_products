@@ -51,9 +51,8 @@ describe "Product page" do
         click_on "Add To Cart"
       end
 
-      it "should display the personalisation" ,focus:true do
+      it "should display the personalisation" do
         current_path.should == "/cart"
-        save_and_open_page
         page.should have_content("First Name: Katie")
         page.should have_content("Number: 12")
       end
@@ -76,14 +75,13 @@ describe "Product page" do
         click_on "Add To Cart"
         current_path.should == "/cart"
 
-        save_and_open_page
         within('tbody#line_items tr:nth-child(1)') do
           page.should have_content("Product1")
           page.should have_content("Katie")
           page.should have_content("12")
           find(:css, '.line_item_quantity').value.should == "1"
         end
-        within('tbody#line_items tr:nth-child(2)') do
+        within('tbody#line_items tr:nth-child(3)') do
           page.should have_content("Product1")
           page.should have_content("Adam")
           page.should have_content("14")
