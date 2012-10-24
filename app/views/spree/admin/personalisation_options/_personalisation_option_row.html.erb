@@ -1,0 +1,12 @@
+  <tr id="<%= spree_dom_id personalisation_option %>">
+    <td><span class="handle"></span></td>
+    <td><%= personalisation_option.name %></td>
+    <td><%= personalisation_option.presentation %></td>
+    <td><%= personalisation_option.max_length %></td>
+    <td><%= personalisation_option.variant.is_master? ? t(:all) : personalisation_option.variant.options_text %></td>
+    <td class="actions">
+      <%= link_to_with_icon 'edit', t(:edit), edit_admin_product_personalisation_option_url(@product, personalisation_option), :class => 'edit' %>
+      &nbsp;
+      <%= link_to_delete personalisation_option, { :url => admin_product_personalisation_option_url(@product, personalisation_option) }%>
+    </td>
+  </tr>

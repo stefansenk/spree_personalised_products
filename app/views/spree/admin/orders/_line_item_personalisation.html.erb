@@ -1,0 +1,5 @@
+<% if f.object.has_personalisation_details? %>
+  <% f.object.personalisation_details.each do |pd| %>
+  	<br><%= "#{pd.presentation}: #{pd.value}" %>
+  <% end %>
+<% end %>

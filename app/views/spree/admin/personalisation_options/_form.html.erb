@@ -1,0 +1,24 @@
+<div data-hook="admin_personalisation_option_form_fields">
+  <div class="clearfix">
+    <div class="left" data-hook="personalisation_options">
+
+      <p data-hook="name">
+        <%= f.label :name, t(:name) %><br />
+        <%= f.text_field :name %>
+      </p>
+      <p data-hook="presentation">
+        <%= f.label :presentation, t(:presentation) %><br />
+        <%= f.text_field :presentation %>
+      </p>
+      <p data-hook="max_length">
+        <%= f.label :max_length, t(:max_length) %><br />
+        <%= f.text_field :max_length %>
+      </p>
+      <p data-hook="variant">
+        <%= f.label :variant_id, t(:variant) %><br />
+        <%= f.select :variant_id, @variants %>
+      </p>
+
+    </div>
+  </div>
+</div>

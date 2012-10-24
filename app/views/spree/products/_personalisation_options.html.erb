@@ -1,0 +1,13 @@
+<% if @product.has_personalisation_options? %>
+  <div id="product_personalisation_options">
+    <h6 class="product-section-title"><%= t(:personalisation) %></h6>
+    <ul>
+      <%= render :partial => 'spree/products/personalisation_option', :collection => @product.personalisation_options %>
+    </ul>
+    <% @product.variants.active.each do |variant| %>
+      <ul id="personalisation_options_variant_<%= variant.id %>" class="personalisation_options_variant">
+        <%= render :partial => 'spree/products/personalisation_option', :collection => variant.personalisation_options %>
+      </ul>
+    <% end %>
+  </div>
+<% end %>

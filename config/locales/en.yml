@@ -2,4 +2,8 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  personalisation: "Personalisation"
+  personalisation_options: "Personalisation Options"
+  new_personalisation_option: "New Personalisation Option"
+  max_length: "Max length"
+

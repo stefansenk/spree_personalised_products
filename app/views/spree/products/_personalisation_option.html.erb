@@ -1,0 +1,10 @@
+<li>
+  <% 
+    label_name = personalisation_option.presentation 
+    if personalisation_option.max_length
+      label_name += " <span class=\"personalisation_length\">(up to #{ pluralize personalisation_option.max_length, 'characters' })</span>"
+    end
+  %>
+  <%= label_tag ['personalisation_options', personalisation_option.id].join('_'), label_name.html_safe %>
+  <%= text_field_tag "personalisation_options[#{personalisation_option.id}]", nil, :maxlength => personalisation_option.max_length %>
+</li>

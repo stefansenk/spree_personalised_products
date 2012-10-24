@@ -1,0 +1,18 @@
+<%= render :partial => 'spree/admin/shared/product_sub_menu' %>
+
+<%= render :partial => 'spree/admin/shared/product_tabs', :locals => { :current => 'Personalisation Options' } %>
+
+<%= render :partial => 'spree/shared/error_messages', :locals => { :target => @personalisation_option } %>
+
+<%= form_for [:admin, @product, @personalisation_option] do |f| %>
+
+  <div data-hook="admin_personalisation_option_edit_form">
+    <%= render :partial => 'form', :locals => { :f => f } %>
+  </div>
+
+  <%#= render :partial => 'spree/admin/shared/edit_resource_links' %>
+  <p class="form-buttons" data-hook="buttons">
+    <%= button t(:update) %>
+    <%= t(:or) %> <%= link_to t(:cancel), admin_product_personalisation_options_url(@product), :id => 'cancel_link' %>
+  </p>
+<% end %>

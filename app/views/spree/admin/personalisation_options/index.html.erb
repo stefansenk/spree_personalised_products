@@ -1,0 +1,40 @@
+<%= render :partial => 'spree/admin/shared/product_sub_menu' %>
+
+<%= render :partial => 'spree/admin/shared/product_tabs', :locals => {:current => 'Personalisation Options'} %>
+
+<table class="index sortable" id="listing_personalisation_options" data-sortable-link="<%= update_positions_admin_product_personalisation_options_path(@product) %>">
+  <tr>
+    <th></th>
+    <th><%= t(:name) %></th>
+    <th><%= t(:presentation) %></th>
+    <th><%= t(:max_length) %></th>
+    <th><%= t(:variant) %></th>
+    <th><%= t(:action) %></th>
+  </tr>
+  
+  <% @product.personalisation_options.each do |personalisation_option| %>
+    <%= render :partial => 'spree/admin/personalisation_options/personalisation_option_row', :locals => { :personalisation_option => personalisation_option } %>
+  <% end %>
+
+  <% @product.variants.each do |variant| %>
+    <% variant.personalisation_options.each do |personalisation_option| %>
+      <%= render :partial => 'spree/admin/personalisation_options/personalisation_option_row', :locals => { :personalisation_option => personalisation_option } %>
+    <% end %>
+  <% end %>
+
+  <% unless @product.has_personalisation_options? %>
+    <tr><td colspan="6"><%= t(:none) %></td></tr>
+  <% end %>
+</table>
+
+<div id="new_personalisation_option" data-hook></div>
+
+<br />
+
+<p id="new_personalisation_option_link" data-hook>
+
+  <%= link_to icon('add') + ' ' + t(:new_personalisation_option), new_admin_product_personalisation_option_url(@product), :remote => :true, 'data-update' => 'new_personalisation_option', :class => 'iconlink new' %>
+
+</p>
+
+<%= image_tag 'spinner.gif', :plugin => 'spree', :style => 'display:none;', :id => 'busy_indicator' %>

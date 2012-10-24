@@ -1,44 +1,64 @@
-# Configure Rails Environment
-ENV['RAILS_ENV'] = 'test'
+require 'rubygems'
+require 'spork'
 
-require File.expand_path('../dummy/config/environment.rb',  __FILE__)
 
-require 'rspec/rails'
-require 'ffaker'
+Spork.prefork do
 
-# Requires supporting ruby files with custom matchers and macros, etc,
-# in spec/support/ and its subdirectories.
-Dir[File.join(File.dirname(__FILE__), 'support/**/*.rb')].each { |f| require f }
+  # Configure Rails Environment
+  ENV['RAILS_ENV'] = 'test'
 
-# Requires factories defined in spree_core
-require 'spree/core/testing_support/factories'
-require 'spree/core/url_helpers'
+  require File.expand_path('../dummy/config/environment.rb',  __FILE__)
 
-RSpec.configure do |config|
-  config.include FactoryGirl::Syntax::Methods
+  require 'rspec/rails'
+  require 'ffaker'
+  require 'database_cleaner'
 
-  # == URL Helpers
-  #
-  # Allows access to Spree's routes in specs:
-  #
-  # visit spree.admin_path
-  # current_path.should eql(spree.products_path)
-  config.include Spree::Core::UrlHelpers
+  require 'spree/core/testing_support/factories'
+  require 'spree/core/testing_support/controller_requests'
+  require 'spree/core/url_helpers'
 
-  # == Mock Framework
-  #
-  # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
-  #
-  # config.mock_with :mocha
-  # config.mock_with :flexmock
-  # config.mock_with :rr
-  config.mock_with :rspec
 
-  # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  RSpec.configure do |config|
+    config.include FactoryGirl::Syntax::Methods
 
-  # If you're not using ActiveRecord, or you'd prefer not to run each of your
-  # examples within a transaction, remove the following line or assign false
-  # instead of true.
-  config.use_transactional_fixtures = true
+    # Allows access to Spree's routes in specs:
+    config.include Spree::Core::UrlHelpers
+    config.include Spree::Core::TestingSupport::ControllerRequests, :type => :controller
+
+    config.mock_with :rspec
+
+    config.use_transactional_fixtures = false
+
+    config.before(:each) do
+      if example.metadata[:js]
+        DatabaseCleaner.strategy = :truncation, { :except => ['spree_countries', 'spree_zones', 'spree_zone_members', 'spree_states', 'spree_roles'] }
+      else
+        DatabaseCleaner.strategy = :transaction
+      end
+    end
+
+    config.before(:each) do
+      DatabaseCleaner.start
+      # reset_spree_preferences
+    end
+
+    config.after(:each) do
+      DatabaseCleaner.clean
+    end
+
+    config.filter_run :focus => true
+    config.run_all_when_everything_filtered = true
+  end
+
+end
+
+Spork.each_run do
+
+  # TODO
+  # FactoryGirl.reload
+  
+  # Dir[File.expand_path("../../lib/**/*.rb",  __FILE__)].each {|f| load f }
+  Dir[File.expand_path("../../spec/support/**/*.rb",  __FILE__)].each {|f| load f }
+  Dir[File.expand_path("../../app/**/*.rb",  __FILE__)].each {|f| load f }
+
 end
