@@ -1,5 +1,5 @@
-SpreePersonalisedProducts
-=========================
+Spree Personalised Products
+===========================
 
 Adds support for personalised products to Spree. In the admin you can assign personalisation options to variants, this could be either the master variant or standard variants. The personalisation options consist primarily of a name and max length of characters. When the customer views a product they are presented with the personalisation input fields, which they must fill in before adding the item to the cart. 
 
