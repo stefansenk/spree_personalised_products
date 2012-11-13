@@ -2,7 +2,7 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_personalised_products'
-  s.version     = '0.1.0'
+  s.version     = '0.2.0'
   s.summary     = 'Adds support for personalised products to Spree.'
   s.description = ''
   s.required_ruby_version = '>= 1.8.7'
@@ -16,12 +16,12 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.requirements << 'none'
 
-  s.add_dependency 'spree_core', '~> 1.1.0'
+  s.add_dependency 'spree_core', '~> 1.2.0'
 
-  s.add_development_dependency 'capybara', '1.0.1'
-  s.add_development_dependency 'factory_girl', '~> 2.6.4'
+  s.add_development_dependency 'capybara'
+  s.add_development_dependency 'factory_girl_rails', '~> 1.7.0'
   s.add_development_dependency 'ffaker'
-  s.add_development_dependency 'rspec-rails',  '~> 2.9'
+  s.add_development_dependency 'rspec-rails'
   s.add_development_dependency 'sqlite3'
   s.add_development_dependency 'spork-rails'
   s.add_development_dependency 'launchy'

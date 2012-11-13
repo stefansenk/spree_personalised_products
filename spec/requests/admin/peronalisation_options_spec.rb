@@ -3,6 +3,7 @@ require 'spec_helper'
 describe "Personalisation Option" do
   context "as admin user" do
     before(:each) do
+      sign_in_as!(create(:admin_user))
       visit spree.admin_path
     end
 

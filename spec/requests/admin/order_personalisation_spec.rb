@@ -9,6 +9,8 @@ describe "Order Personalisation" do
     before(:each) do
       create(:personalisation_detail, :presentation => 'First Name', :value => 'Joe', :line_item_id => line_item.id)
       create(:personalisation_detail, :presentation => 'Second Name', :value => 'Bloggs', :line_item_id => line_item.id)
+
+      sign_in_as!(create(:admin_user))
       visit spree.admin_path
       click_link "Orders"
       within(:css, 'table#listing_orders') { click_link "Edit" }

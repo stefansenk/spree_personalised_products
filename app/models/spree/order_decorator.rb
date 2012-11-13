@@ -53,8 +53,7 @@ module Spree
 
     def add_variant_with_personalisation(variant, quantity = 1, personalisation = {})
 
-      current_item = contains?(variant)
-      # current_item = find_line_item_by_variant(variant) # TODO used in Spree 1.2
+      current_item = find_line_item_by_variant(variant)
 
       if current_item and personalisation.blank?
         current_item.quantity += quantity
@@ -76,20 +75,6 @@ module Spree
           })
           current_item.personalisation_details << personalisation_detail
         end
-      end
-
-      # TODO remove for Spree 1.2
-      # populate line_items attributes for additional_fields entries
-      # that have populate => [:line_item]
-      Variant.additional_fields.select { |f| !f[:populate].nil? && f[:populate].include?(:line_item) }.each do |field|
-        value = ''
-
-        if field[:only].nil? || field[:only].include?(:variant)
-          value = variant.send(field[:name].gsub(' ', '_').downcase)
-        elsif field[:only].include?(:product)
-          value = variant.product.send(field[:name].gsub(' ', '_').downcase)
-        end
-        current_item.update_attribute(field[:name].gsub(' ', '_').downcase, value)
       end
 
       self.reload

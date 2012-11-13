@@ -38,8 +38,8 @@ TODO
 - Allow editing the personalisation details for a line item in the admin.
 - Allow customer to select options from a list of values. Currently only supports input as a text field.
 - Allow adding multiple variants with personalisations to the cart at once. Currently personalisation only works adding one variant at a time.
-- Updates for Spree 1.2.
 - Allow personalised orders to be placed through the API.
+- Fix or remove the controller specs.
 	
 
 Copyright (c) 2012 Stefan Senk, released under the New BSD License

@@ -23,7 +23,8 @@ Spork.prefork do
 
     # Allows access to Spree's routes in specs:
     config.include Spree::Core::UrlHelpers
-    config.include Spree::Core::TestingSupport::ControllerRequests, :type => :controller
+    # config.include Spree::Core::TestingSupport::ControllerRequests, :type => :controller
+    # config.include Devise::TestHelpers, :type => :controller
 
     config.mock_with :rspec
 
@@ -60,5 +61,9 @@ Spork.each_run do
   # Dir[File.expand_path("../../lib/**/*.rb",  __FILE__)].each {|f| load f }
   Dir[File.expand_path("../../spec/support/**/*.rb",  __FILE__)].each {|f| load f }
   Dir[File.expand_path("../../app/**/*.rb",  __FILE__)].each {|f| load f }
+
+  RSpec.configure do |config|
+    config.include AuthenticationHelpers, :type => :request
+  end
 
 end
