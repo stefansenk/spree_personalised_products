@@ -32,6 +32,18 @@ Run:
     $ bundle exec rspec spec
 
 
+Screenshots
+===========
+
+Product page:
+
+![Screenshot](https://raw.github.com/stefansenk/spree_personalised_products/master/screenshot-product.png)
+
+Product admin page:
+
+![Screenshot](https://raw.github.com/stefansenk/spree_personalised_products/master/screenshot-admin.png)
+
+
 TODO
 ====
 
