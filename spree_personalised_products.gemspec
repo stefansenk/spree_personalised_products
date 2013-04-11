@@ -19,9 +19,11 @@ Gem::Specification.new do |s|
   s.add_dependency 'spree_core', '~> 1.3.0'
 
   s.add_development_dependency 'capybara', '~> 1.1'
-  s.add_development_dependency 'factory_girl_rails', '~> 1.7.0'
+  s.add_development_dependency 'factory_girl', '~> 4.2'
   s.add_development_dependency 'ffaker'
-  s.add_development_dependency 'rspec-rails'
+  s.add_development_dependency 'rspec-rails',  '~> 2.13'
+  s.add_development_dependency 'coffee-rails'
+  s.add_development_dependency 'sass-rails'
   s.add_development_dependency 'sqlite3'
   s.add_development_dependency 'spork-rails'
   s.add_development_dependency 'launchy'

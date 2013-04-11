@@ -11,7 +11,7 @@ describe "Personalisation Option" do
       before(:each) do
         create(:product)
         click_link 'Products'
-        within('table.index tr:nth-child(2)') { click_link "Edit" }
+        within_row(1) { click_icon :edit }
         click_link 'Personalisation Options'
         click_link "New Personalisation Option"
       end
@@ -42,7 +42,7 @@ describe "Personalisation Option" do
         create(:personalisation_option, :name => 'second name', :presentation => 'Second Name', :max_length => 8, :position => 2)
 
         click_link 'Products'
-        within('table.index tr:nth-child(2)') { click_link "Edit" }
+        within_row(1) { click_icon :edit }
         click_link 'Personalisation Options'
       end
 
@@ -108,7 +108,7 @@ describe "Personalisation Option" do
         create(:personalisation_option, :name => 'number', :position => 2, :variant => variant)
 
         click_link 'Products'
-        within('table.index tr:nth-child(2)') { click_link "Edit" }
+        within_row(1) { click_icon :edit }
         click_link 'Personalisation Options'
       end
 

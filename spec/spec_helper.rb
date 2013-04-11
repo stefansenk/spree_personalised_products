@@ -1,13 +1,12 @@
 require 'rubygems'
 require 'spork'
 
-
 Spork.prefork do
 
   # Configure Rails Environment
-  ENV['RAILS_ENV'] = 'test'
+  ENV['RAILS_ENV'] ||= 'test'
 
-  require File.expand_path('../dummy/config/environment.rb',  __FILE__)
+  require File.expand_path("../dummy/config/environment", __FILE__)
 
   require 'rspec/rails'
   require 'ffaker'
@@ -15,7 +14,9 @@ Spork.prefork do
 
   require 'spree/core/testing_support/factories'
   require 'spree/core/testing_support/controller_requests'
+  require 'spree/core/testing_support/authorization_helpers'
   require 'spree/core/url_helpers'
+  require 'spree/core/testing_support/capybara_ext'
 
 
   RSpec.configure do |config|
@@ -23,8 +24,6 @@ Spork.prefork do
 
     # Allows access to Spree's routes in specs:
     config.include Spree::Core::UrlHelpers
-    # config.include Spree::Core::TestingSupport::ControllerRequests, :type => :controller
-    # config.include Devise::TestHelpers, :type => :controller
 
     config.mock_with :rspec
 
@@ -40,7 +39,6 @@ Spork.prefork do
 
     config.before(:each) do
       DatabaseCleaner.start
-      # reset_spree_preferences
     end
 
     config.after(:each) do

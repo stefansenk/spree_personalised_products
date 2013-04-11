@@ -1,7 +1,7 @@
 
-Deface::Override.new(:virtual_path => "spree/admin/orders/_line_item",
+Deface::Override.new(:virtual_path => "spree/admin/shared/_order_details",
                      :name => "admin_line_item_personalisation",
-                     :insert_bottom => "[data-hook='admin_order_form_line_item_row'] td:nth-child(1)",
+                     :insert_bottom => "[data-hook='order_details_line_item_row'] td:nth-child(1)",
                      :partial => "spree/admin/orders/line_item_personalisation",
                      :disabled => false)
 					# :original => '' # TODO
