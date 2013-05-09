@@ -1,6 +1,8 @@
 Spree Personalised Products
 ===========================
 
+[![Build Status](https://travis-ci.org/stefansenk/spree_personalised_products.png)](https://travis-ci.org/stefansenk/spree_personalised_products)
+
 Adds support for personalised products to Spree. In the admin you can assign personalisation options to variants, this could be either the master variant or standard variants. The personalisation options consist primarily of a name and max length of characters. When the customer views a product they are presented with the personalisation input fields, which they must fill in before adding the item to the cart. 
 
 The personalisation details they entered are displayed by the line item in their shopping cart and in the admin. To change the personalisation details the customer must delete the product and add it again. A personalised product can be added to the cart multiple times, as it could be bought with different personalisation options.
